@@ -1,11 +1,10 @@
 class Student
   attr_accessor :name, :image, :id
 
-
-  if File.exists?('students.db')
-    File.delete('students.db')
+  if File.exists?('./db/students.db')
+    File.delete('./db/students.db')
   end
-  @@db = SQLite3::Database.new "students.db"
+  @@db = SQLite3::Database.new "./db/students.db"
   @@db.execute %Q{
     CREATE TABLE students (id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT,
